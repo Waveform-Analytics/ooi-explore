@@ -1,0 +1,6 @@
+obspy
+dask
+xarray
+matplotlib
+pandas
+scipy
