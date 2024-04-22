@@ -85,7 +85,7 @@ def parallel_process(data, func=make_xarray, sub_segment_length=6, n_processes=N
     # Break into the requested number of 5-minute segments at a time (30-mins total)
     segments = [data[i:i + sub_segment_length] for i in range(0, len(data), sub_segment_length)]
     for idx, segment in enumerate(segments):
-        print( "Segment " + str(idx+1) + " of " + str(len(segments)) )
+        # print( "Segment " + str(idx+1) + " of " + str(len(segments)) )
         results = pool.map(func, segment)
         # Use dask for efficiency
         dask_datasets = [da.chunk({'seconds': 50, 'frequency': 50}) for da in results]
